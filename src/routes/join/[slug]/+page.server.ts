@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '$lib/firebase';
+import { db } from '$lib/firebase/firebase';
 import type { TEvents } from '../../../types';
 
 export const load = (async ({ params }) => {

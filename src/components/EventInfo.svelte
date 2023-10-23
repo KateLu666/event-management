@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { User } from 'firebase/auth';
 	import { formatDate } from '../helpers/formatDate';
-	import { authStore } from '../store/store';
+	import { authStore } from '../store/authStore';
 	import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
-	import { db } from '$lib/firebase';
+	import { db } from '$lib/firebase/firebase';
 	import { goto } from '$app/navigation';
 
 	export let date: string;

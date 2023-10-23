@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { User } from 'firebase/auth';
-	import { authStore, authHandlers } from '../store/store';
-	import { auth } from '$lib/firebase';
+	import { authStore, authHandlers } from '../store/authStore';
+	import { auth } from '$lib/firebase/firebase';
+	import { goto } from '$app/navigation';
 
 	let currentUser: User | null;
 	authStore.subscribe((value) => {
-		currentUser = value.user;
+		currentUser = value.currentUser;
 	});
 </script>
 
@@ -22,19 +23,17 @@
 	<!-- User/Logout -->
 	{#if currentUser}
 		<div class="items-center space-x-2 hidden xl:inline-flex">
-			<img
-				src={currentUser?.photoURL}
-				alt={currentUser?.displayName}
-				class="w-12 h-12 rounded-full object-cover"
-			/>
 			<div class="flex flex-col">
 				<p>
-					Logged Out as : <span class="text-purple-500 italic font-bold"
-						>{currentUser?.displayName}</span
-					>
+					<span class="text-purple-500 italic font-bold">{currentUser?.email}</span>
 				</p>
-				<p>{currentUser?.email}</p>
+				<p />
 			</div>
+			<button
+				on:click={() => goto('/updateProfile')}
+				class="bg-white hover:bg-grey-100 text-black font-bold py-1 px-3 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+				>Update</button
+			>
 			<button
 				on:click={authHandlers.logout}
 				class="bg-white hover:bg-grey-100 text-black font-bold py-1 px-3 border-b-4 border-gray-700 hover:border-gray-500 rounded"

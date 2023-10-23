@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { doc, setDoc } from 'firebase/firestore';
-	import { db, storage } from '$lib/firebase';
+	import { db, storage } from '$lib/firebase/firebase';
 	import type { User } from 'firebase/auth';
-	import { authStore } from '../../store/store';
+	import { authStore } from '../../store/authStore';
 	import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 	import { goto } from '$app/navigation';
 

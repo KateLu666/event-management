@@ -2,7 +2,7 @@
 
 import { initializeApp, type FirebaseApp, getApps, deleteApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { GoogleAuthProvider, getAuth } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, setPersistence, inMemoryPersistence } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 
 // TODO: Add SDKs for Firebase products that you want to use
